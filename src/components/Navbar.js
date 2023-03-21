@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { MdArrowDropDown } from "react-icons/md";
+
 import { FaBars, FaTimes } from "react-icons/fa";
+import menu from "./Data";
 
 const Navbar = () => {
   const [showLinks, setshowLinks] = useState(false);
@@ -37,48 +38,29 @@ const Navbar = () => {
         </div>
         <div className="links-container" ref={linksContainerRef}>
           <ul className="links" ref={linksRef}>
-            <li>
-              <Link to="/">
-                Personal
-                <span>
-                  <MdArrowDropDown
-                    style={{
-                      display: "inline-block",
-                      justiftyContent: "center",
-                      alignItems: "center",
-                      color: "#c4c4c4",
-                      fontSize: "1.2rem",
-                      verticalAlign: "middle",
-                    }}
-                  />
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/">Agent </Link>
-            </li>
-            <li>
-              <Link to="/">
-                Company
-                <span>
-                  <MdArrowDropDown
-                    style={{
-                      display: "inline-block",
-                      justiftyContent: "center",
-                      alignItems: "center",
-                      color: "#c4c4c4",
-                      fontSize: "1.2rem",
-                      verticalAlign: "middle",
-                    }}
-                  />
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/">Press</Link>
-            </li>
-
-            <li>
+            {menu.map((item) => {
+              const { id, title, path, icon } = item;
+              return (
+                <li>
+                  <Link to={path}>
+                    {title}{" "}
+                    <span
+                      style={{
+                        display: "inline-block",
+                        justiftyContent: "center",
+                        alignItems: "center",
+                        color: "#c4c4c4",
+                        fontSize: "1.2rem",
+                        verticalAlign: "middle",
+                      }}
+                    >
+                      {icon}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+            <li className="image">
               <Link>
                 <img
                   className="nav-flag"
