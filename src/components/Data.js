@@ -1,27 +1,37 @@
 import React from "react";
 import { MdArrowDropDown } from "react-icons/md";
+import { BsArrowRight } from "react-icons/bs";
 const menu = [
   {
-    id: 1,
-    title: "Personal",
-    path: "./",
+    page: "personal",
     icon: <MdArrowDropDown />,
+    link: [
+      {
+        label: "Palmpay App",
+        url: "/palmpay",
+        icon: <BsArrowRight />,
+      },
+    ],
   },
   {
-    id: 2,
-    title: "Agent",
-    path: "./",
+    page: "agent",
+    url: "/agent",
+    link: [{ url: "" }],
   },
   {
-    id: 3,
-    title: "Company",
-    path: "./",
+    page: "company",
     icon: <MdArrowDropDown />,
+    link: [
+      { label: "About us", url: "/about", icon: <BsArrowRight /> },
+      { label: "Career", url: "/career", icon: <BsArrowRight /> },
+      { label: "Blog", url: "/blog", icon: <BsArrowRight /> },
+    ],
   },
   {
-    id: 4,
-    title: "Press",
-    path: "./",
+    page: "press",
+    url: "/press",
+    link: [{ label: "", url: "/press", icon: "" }],
   },
 ];
+
 export default menu;

@@ -8,6 +8,7 @@ const Navbar = () => {
   const [showLinks, setshowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
+  const [dropdown, setDropdown] = useState(false);
 
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
@@ -22,7 +23,7 @@ const Navbar = () => {
     <nav>
       <div className="nav-center">
         <div className="nav-header">
-          <Link>
+          <Link to="/">
             <img
               src="https://www.palmpay.com/_next/static/media/logo.5ef03e1a.png?w=256&q=100"
               alt="palmpay"
@@ -38,25 +39,53 @@ const Navbar = () => {
         </div>
         <div className="links-container" ref={linksContainerRef}>
           <ul className="links" ref={linksRef}>
-            {menu.map((item) => {
-              const { id, title, path, icon } = item;
+            {menu.map((item, index) => {
+              const { link, page, icon, url } = item;
+
               return (
-                <li>
-                  <Link to={path}>
-                    {title}{" "}
+                <li key={index}>
+                  <Link to={url} className="page-links">
+                    {page}
                     <span
                       style={{
-                        display: "inline-block",
-                        justiftyContent: "center",
-                        alignItems: "center",
+                        position: "relative",
+                        top: "3px",
+                        marginRight: "10px",
                         color: "#c4c4c4",
                         fontSize: "1.2rem",
-                        verticalAlign: "middle",
                       }}
                     >
                       {icon}
                     </span>
                   </Link>
+                  <div className="submenu ">
+                    {link.map((link, index) => {
+                      const { label, url, icon } = link;
+                      if (link === "") {
+                        return <div className="hide-link"></div>;
+                      }
+
+                      return (
+                        <Link to={url} key={index}>
+                          <span style={{ fontSize: "0.9rem" }}>{label}</span>
+                          <span
+                            style={{
+                              color: "#000080",
+                              fontSize: "1.2rem",
+                              width: "50px",
+                              height: "50px",
+                              position: "relative",
+                              top: "5px",
+                              left: "5px",
+                              marginRight: "10px",
+                            }}
+                          >
+                            {icon}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </li>
               );
             })}

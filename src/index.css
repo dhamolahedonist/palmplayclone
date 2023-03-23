@@ -214,8 +214,43 @@ nav {
   height: 10rem;
 }
 
+    /* sublinks */
+    .sublinks a{
+      color: var(--mainBlack);
+      font-size: 17px
+    }
 
+  .page-links {
+    color: (var(--mainBlack));
+  }
+
+
+
+
+  @media screen and (min-width: 800px) {
+  .sublinks {
+    display: block;
+  }
+    /* links */
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 5.3rem;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px 1px #888888;
+      line-height: 2.5rem;
+     
+    
+    
+      border:0.2px solid var(--mainBlack) ;
+    }
+
+  
+   
+}
 @media screen and (min-width: 800px) {
+  
   .nav-center {
     max-width: 1170px;
     margin: 0 auto;
@@ -240,10 +275,8 @@ nav {
   .links {
     display: flex;
      align-items: center;
-    
-    
-  
   }
+ 
 
   .links a {
     padding: 0;
@@ -255,6 +288,12 @@ nav {
     padding: 0;
     background: transparent;
   }
-
+    /* 
+  ====== 
+  Variables 
+  ======
+  */
+  
+  
 
 }
